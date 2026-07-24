@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: Tana Documentation AddToNodeV2 API
+  version: '1.0'
+  description: 'A public, unauthenticated agent-native documentation API for Tana. It lets an agent or client discover Tana''s documentation programmatically: fetch the full index (feature taxonomy, section outlines, descriptions), search documentation by text pattern scoped to feature areas, and read a full page or a specific section as clean markdown. Covers both the Tana agentic meeting platform (product `tana`) and Tana Outliner (product `outliner`). The service is self-describing at https://tana.inc/api/docs and anchored by an llms.txt index.'
+  contact:
+    name: Tana
+    url: https://tana.inc/api/docs
+servers:
+- url: https://tana.inc
+  description: Tana docs host (product defaults to tana)
+- url: https://outliner.tana.inc
+  description: Tana Outliner docs host (product defaults to outliner)
+tags:
+- name: AddToNodeV2
+paths:
+  /addToNodeV2:
+    post:
+      operationId: addToNode
+      summary: Add nodes to a Tana graph (or rename a node)
+      description: Creates one or more nodes under `targetNodeId`, or renames the target node when `setName` is supplied. Nodes may include children, supertags, fields, and typed values (date, url, reference, boolean, file). To create a field definition set its supertag to `SYS_T02`; to create a supertag set it to `SYS_T01`; target `SCHEMA` for schema nodes or `INBOX` for the workspace inbox. Omitting `targetNodeId` places nodes in the Library.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddToNodeRequest'
+            examples:
+              createNode:
+                summary: Create a node with a supertag
+                value:
+                  nodes:
+                  - name: The Hobbit
+                    description: A book by J.R.R. Tolkien
+                    supertags:
+                    - id: MyTagId
+                    children: []
+              createField:
+                summary: Create a field definition in the schema
+                value:
+                  targetNodeId: SCHEMA
+                  nodes:
+                  - name: Author
+                    description: Who wrote the book?
+                    supertags:
+                    - id: SYS_T02
+              renameNode:
+                summary: Rename a node
+                value:
+                  targetNodeId: someNodeId
+                  setName: New node name
+      responses:
+        '200':
+          description: Nodes created (or node renamed) successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TanaNode'
+        '201':
+          description: Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TanaNode'
+        '400':
+          description: Bad request — invalid payload, unknown target, or a restriction was violated.
+        '401':
+          description: Unauthorized — missing or invalid bearer token.
+        '429':
+          description: Rate limited — exceeded one call per second per token.
+      tags:
+      - AddToNodeV2
+components:
+  schemas:
+    AddToNodeRequest:
+      type: object
+      properties:
+        targetNodeId:
+          type: string
+          description: Destination node. Accepts a node id, `SCHEMA`, or `INBOX`. Defaults to the workspace Library when omitted. The relative Today-node is not supported.
+        nodes:
+          type: array
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/APINode'
+        setName:
+          type: string
+          description: When present, renames the target node (mutually exclusive with nodes).
+    APINode:
+      type: object
+      description: A node to create. dataType selects the node shape.
+      properties:
+        type:
+          type: string
+          enum:
+          - node
+          - field
+        dataType:
+          type: string
+          enum:
+          - plain
+          - boolean
+          - date
+          - url
+          - reference
+          - file
+        name:
+          type: string
+        description:
+          type: string
+        attributeId:
+          type: string
+          description: For field nodes (type=field), the field definition id.
+        value:
+          type: boolean
+          description: For boolean/checkbox nodes.
+        id:
+          type: string
+          description: For reference nodes, the referenced node id.
+        file:
+          type: string
+          description: For file nodes, base64-encoded file contents.
+        contentType:
+          type: string
+        filename:
+          type: string
+        supertags:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/APINode'
+      required:
+      - name
+    TanaNode:
+      type: object
+      properties:
+        nodeId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/TanaNode'
+externalDocs:
+  description: Tana Documentation API (self-describing manifest)
+  url: https://tana.inc/api/docs

@@ -1,0 +1,136 @@
+openapi: 3.1.0
+info:
+  title: Tana Documentation AddToNodeV2 Docs API
+  version: '1.0'
+  description: 'A public, unauthenticated agent-native documentation API for Tana. It lets an agent or client discover Tana''s documentation programmatically: fetch the full index (feature taxonomy, section outlines, descriptions), search documentation by text pattern scoped to feature areas, and read a full page or a specific section as clean markdown. Covers both the Tana agentic meeting platform (product `tana`) and Tana Outliner (product `outliner`). The service is self-describing at https://tana.inc/api/docs and anchored by an llms.txt index.'
+  contact:
+    name: Tana
+    url: https://tana.inc/api/docs
+servers:
+- url: https://tana.inc
+  description: Tana docs host (product defaults to tana)
+- url: https://outliner.tana.inc
+  description: Tana Outliner docs host (product defaults to outliner)
+tags:
+- name: Docs
+paths:
+  /api/docs/index:
+    get:
+      operationId: getDocsIndex
+      summary: Get the full documentation index
+      description: Returns the full documentation index with feature taxonomy, section outlines, and descriptions as markdown.
+      responses:
+        '200':
+          description: Documentation index.
+          content:
+            text/markdown:
+              schema:
+                type: string
+      tags:
+      - Docs
+  /api/docs/search:
+    get:
+      operationId: searchDocs
+      summary: Search documentation by text pattern
+      description: Search documentation by text pattern, optionally scoped to feature areas. Returns matching document paths, titles, descriptions, and summaries.
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: Search pattern. Minimum 2 characters.
+        schema:
+          type: string
+          minLength: 2
+      - name: features
+        in: query
+        required: false
+        description: Comma-separated feature keys to scope the search (e.g. ai-chat,types). Only docs tagged with these features are searched.
+        schema:
+          type: string
+      - name: product
+        in: query
+        required: false
+        description: 'Product to search: `tana` or `outliner`. Defaults to the product of the host you are querying.'
+        schema:
+          type: string
+          enum:
+          - tana
+          - outliner
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of results to return.
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query:
+                    type: string
+                  features:
+                    type: string
+                    nullable: true
+                  product:
+                    type: string
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        path:
+                          type: string
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        tldr:
+                          type: array
+                          items:
+                            type: string
+      tags:
+      - Docs
+  /api/docs/read:
+    get:
+      operationId: readDoc
+      summary: Read a full page or a specific section as clean markdown
+      description: Read a full documentation page or a specific section as clean markdown.
+      parameters:
+      - name: path
+        in: query
+        required: true
+        description: Document path in the format product/type/slug, using the singular docType key (e.g. tana/feature/ai-chat, outliner/help/getting-started). This is the path returned in search results.
+        schema:
+          type: string
+      - name: section
+        in: query
+        required: false
+        description: Heading id to extract a single section (e.g. model-selection). Use "intro" for content before the first heading.
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        description: 'Output format: markdown (default, MDX stripped) or raw (original MDX source).'
+        schema:
+          type: string
+          enum:
+          - markdown
+          - raw
+          default: markdown
+      responses:
+        '200':
+          description: Document content as markdown.
+          content:
+            text/markdown:
+              schema:
+                type: string
+      tags:
+      - Docs
+externalDocs:
+  description: Tana Documentation API (self-describing manifest)
+  url: https://tana.inc/api/docs
