@@ -1,0 +1,14 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/tana-input-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Workspace-scoped API token, generated in the Tana client under API Tokens. Sent
+    as `Authorization: Bearer <token>`.'
+  sources:
+  - openapi/tana-input-api-openapi.yml

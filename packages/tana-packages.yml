@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/tanainc/tana-input-api-samples
+notes: >-
+  Tana does not publish a client library to a public package registry (npm
+  @tanainc, PyPI, etc. return 404). The first-party client is the reference
+  TypeScript client shipped in the tanainc/tana-input-api-samples repository
+  (src/TanaAPIClient.ts) with runnable example scripts. Community wrappers exist
+  on npm (e.g. text2tana) but are not first-party.
+packages:
+  - language: typescript
+    registry: github
+    name: tana-input-api-samples (TanaAPIClient)
+    url: https://github.com/tanainc/tana-input-api-samples
+    install: git clone https://github.com/tanainc/tana-input-api-samples && pnpm install
+    official: true
+    kind: reference-client
+    covers: Tana Input API

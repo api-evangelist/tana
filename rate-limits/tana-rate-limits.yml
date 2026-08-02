@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: https://outliner.tana.inc/learn/features/input-api
+apis:
+  - name: Tana Input API
+    limits:
+      - scope: per-token
+        limit_count: 1
+        window: 1s
+        description: One call per second per API token.
+      - scope: per-request
+        limit_count: 100
+        unit: nodes
+        description: Maximum 100 nodes created per call.
+      - scope: per-request
+        limit_count: 5000
+        unit: characters
+        description: Maximum 5000 characters in one request.
+    notes: >-
+      Limits are documented as intentionally conservative starting values; Tana
+      invites feedback via its Slack community when they are hit. Workspaces over
+      750k nodes will not sync.

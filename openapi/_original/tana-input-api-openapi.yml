@@ -1,0 +1,168 @@
+openapi: 3.1.0
+info:
+  title: Tana Input API
+  version: v2
+  description: >-
+    The Tana Input API adds data — nodes, fields, and supertags — to a Tana
+    Outliner graph. A single POST endpoint (`addToNodeV2`) accepts a JSON
+    payload describing one or more nodes to create (optionally with children,
+    supertags, fields, dates, references, checkboxes, and file uploads) under a
+    target node, or renames a target node. APIs for reading from Tana graphs are
+    not yet available (on the roadmap). Authentication uses a workspace-scoped
+    bearer token generated from the Tana client (API Tokens). Restrictions: one
+    call per second per token, max 100 nodes per call, max 5000 characters per
+    request.
+  contact:
+    name: Tana
+    url: https://outliner.tana.inc/learn/features/input-api
+  x-source: https://github.com/tanainc/tana-input-api-samples
+externalDocs:
+  description: Tana Input API documentation
+  url: https://outliner.tana.inc/learn/features/input-api
+servers:
+  - url: https://europe-west1-tagr-prod.cloudfunctions.net
+    description: Tana Input API (Google Cloud Functions, europe-west1)
+security:
+  - bearerAuth: []
+paths:
+  /addToNodeV2:
+    post:
+      operationId: addToNode
+      summary: Add nodes to a Tana graph (or rename a node)
+      description: >-
+        Creates one or more nodes under `targetNodeId`, or renames the target
+        node when `setName` is supplied. Nodes may include children, supertags,
+        fields, and typed values (date, url, reference, boolean, file). To create
+        a field definition set its supertag to `SYS_T02`; to create a supertag
+        set it to `SYS_T01`; target `SCHEMA` for schema nodes or `INBOX` for the
+        workspace inbox. Omitting `targetNodeId` places nodes in the Library.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddToNodeRequest'
+            examples:
+              createNode:
+                summary: Create a node with a supertag
+                value:
+                  nodes:
+                    - name: The Hobbit
+                      description: A book by J.R.R. Tolkien
+                      supertags:
+                        - id: MyTagId
+                      children: []
+              createField:
+                summary: Create a field definition in the schema
+                value:
+                  targetNodeId: SCHEMA
+                  nodes:
+                    - name: Author
+                      description: Who wrote the book?
+                      supertags:
+                        - id: SYS_T02
+              renameNode:
+                summary: Rename a node
+                value:
+                  targetNodeId: someNodeId
+                  setName: New node name
+      responses:
+        '200':
+          description: Nodes created (or node renamed) successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TanaNode'
+        '201':
+          description: Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TanaNode'
+        '400':
+          description: Bad request — invalid payload, unknown target, or a restriction was violated.
+        '401':
+          description: Unauthorized — missing or invalid bearer token.
+        '429':
+          description: Rate limited — exceeded one call per second per token.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Workspace-scoped API token, generated in the Tana client under
+        API Tokens. Sent as `Authorization: Bearer <token>`.
+  schemas:
+    AddToNodeRequest:
+      type: object
+      properties:
+        targetNodeId:
+          type: string
+          description: >-
+            Destination node. Accepts a node id, `SCHEMA`, or `INBOX`. Defaults
+            to the workspace Library when omitted. The relative Today-node is not
+            supported.
+        nodes:
+          type: array
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/APINode'
+        setName:
+          type: string
+          description: When present, renames the target node (mutually exclusive with nodes).
+    APINode:
+      type: object
+      description: A node to create. dataType selects the node shape.
+      properties:
+        type:
+          type: string
+          enum: [node, field]
+        dataType:
+          type: string
+          enum: [plain, boolean, date, url, reference, file]
+        name:
+          type: string
+        description:
+          type: string
+        attributeId:
+          type: string
+          description: For field nodes (type=field), the field definition id.
+        value:
+          type: boolean
+          description: For boolean/checkbox nodes.
+        id:
+          type: string
+          description: For reference nodes, the referenced node id.
+        file:
+          type: string
+          description: For file nodes, base64-encoded file contents.
+        contentType:
+          type: string
+        filename:
+          type: string
+        supertags:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/APINode'
+      required: [name]
+    TanaNode:
+      type: object
+      properties:
+        nodeId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/TanaNode'

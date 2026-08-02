@@ -1,0 +1,63 @@
+generated: '2026-07-21'
+method: searched
+source:
+  - https://outliner.tana.inc/learn/features/input-api
+  - https://tana.inc/api/docs
+  - openapi/tana-input-api-openapi.yml
+  - openapi/tana-docs-api-openapi.yml
+authentication:
+  input_api:
+    style: bearer-token
+    header: 'Authorization: Bearer <token>'
+    token_type: workspace-scoped API token (generated in the Tana client)
+    see: authentication/tana-authentication.yml
+  docs_api:
+    style: none
+    notes: The Documentation API is public and unauthenticated.
+idempotency:
+  supported: false
+  notes: >-
+    The Input API documents no idempotency-key mechanism; retries may create
+    duplicate nodes. Callers should track created nodeIds returned in the
+    response to avoid re-sending.
+pagination:
+  supported: false
+  notes: >-
+    Neither API paginates. The Input API is write-only (one call per request);
+    the Documentation API search endpoint bounds results with a `limit` query
+    param rather than cursor/offset pagination.
+request_format:
+  content_type: application/json
+  input_api:
+    envelope:
+      targetNodeId: destination node id, or SCHEMA / INBOX (defaults to Library)
+      nodes: array of node objects (max 100)
+      setName: alternative to nodes; renames the target node
+    node_data_types: [plain, boolean, date, url, reference, file]
+    special_supertags:
+      SYS_T01: create a supertag definition
+      SYS_T02: create a field definition
+  docs_api:
+    style: query-parameters
+    output: text/markdown or application/json
+versioning:
+  input_api:
+    scheme: endpoint-path
+    current: addToNodeV2
+    notes: A "V2" endpoint supersedes the original addToNode endpoint.
+  docs_api:
+    scheme: unversioned
+error_envelope:
+  input_api:
+    notes: >-
+      Non-2xx responses return an HTTP status with a plain-text body; there is no
+      structured problem+json envelope documented.
+    see: errors/tana-problem-types.yml
+rate_limit_signaling:
+  input_api:
+    limits: one call/second/token; 100 nodes/call; 5000 chars/request
+    see: rate-limits/tana-rate-limits.yml
+metadata:
+  notes: >-
+    Nodes carry name, description, supertags (tags), and typed children (fields,
+    dates, references, checkboxes, file attachments). See data-model/tana-data-model.yml.

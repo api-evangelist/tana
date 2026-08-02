@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: probed
+source: live probes of tana.inc and outliner.tana.inc
+hosts:
+  - host: https://tana.inc
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://outliner.tana.inc
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+notes: >-
+  No /.well-known discovery documents are published. Note that Tana does expose a
+  self-describing Documentation API manifest at https://tana.inc/api/docs and an
+  llms.txt index at https://tana.inc/llms.txt (captured separately).

@@ -1,0 +1,11 @@
+generated: '2026-07-21'
+method: generated
+skills:
+  - file: tana-add-to-graph.md
+    name: Add content to a Tana graph
+    api: openapi/tana-input-api-openapi.yml
+    operations: [addToNode]
+  - file: tana-search-docs.md
+    name: Search and read Tana documentation
+    api: openapi/tana-docs-api-openapi.yml
+    operations: [getDocsIndex, searchDocs, readDoc]

@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Tana Input API
+  version: 1.0.0
+extends: openapi/tana-input-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-source: https://github.com/tanainc/tana-input-api-samples
+      x-apievangelist-artifacts:
+        - authentication/tana-authentication.yml
+        - conventions/tana-conventions.yml
+        - rate-limits/tana-rate-limits.yml
+        - errors/tana-problem-types.yml
+        - data-model/tana-data-model.yml
+  - target: $.paths['/addToNodeV2'].post
+    update:
+      x-rate-limit: one call per second per token; max 100 nodes; max 5000 chars
+      x-idempotent: false

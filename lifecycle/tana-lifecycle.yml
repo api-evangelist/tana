@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source:
+  - https://outliner.tana.inc/learn/features/input-api
+  - https://status.tana.inc
+  - https://github.com/tanainc/tana-input-api-samples
+versioning:
+  input_api:
+    scheme: endpoint-path
+    current: addToNodeV2
+    notes: The updated Input API uses a new endpoint (V2) alongside the legacy addToNode.
+  docs_api:
+    scheme: unversioned
+status_page: https://status.tana.inc
+roadmap:
+  notes: >-
+    Tana states that read APIs for Tana graphs are "not available but on our
+    roadmap." No dedicated public roadmap page URL was found.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation/Sunset (RFC 8594) policy is published.
+deprecated_operations: []

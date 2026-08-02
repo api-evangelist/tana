@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/tana-input-api-openapi.yml
+notes: >-
+  Entity graph derived from the Tana Input API. Tana's core primitive is the
+  Node; supertags and fields are themselves nodes (created with system supertags
+  SYS_T01 and SYS_T02). Node ids are 7-16 char [A-Za-z0-9_-] strings.
+entities:
+  - name: Node
+    description: The universal primitive — a piece of content in the graph, with a name and optional description.
+    id_field: nodeId
+    id_pattern: '^[A-Za-z0-9_-]{7,16}$'
+  - name: Supertag
+    description: A tag/type applied to nodes; defined as a node carrying system supertag SYS_T01.
+    id_field: id
+  - name: Field
+    description: A named attribute on a node; definition is a node carrying system supertag SYS_T02.
+    id_field: attributeId
+  - name: Workspace
+    description: Top-level container; API tokens are scoped per workspace.
+standard_nodes:
+  SCHEMA: Schema node (holds supertag and field definitions).
+  INBOX: Workspace inbox.
+  Library: Default destination for created nodes.
+relationships:
+  - from: Node
+    to: Node
+    type: has_many
+    via: children
+  - from: Node
+    to: Supertag
+    type: has_many
+    via: supertags
+  - from: Node
+    to: Field
+    type: has_many
+    via: children (type=field, attributeId)
+  - from: Node
+    to: Node
+    type: has_one
+    via: reference (dataType=reference, id)
+  - from: Field
+    to: Supertag
+    type: belongs_to
+    via: SYS_T02 definition

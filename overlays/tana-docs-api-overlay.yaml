@@ -1,0 +1,14 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Tana Documentation API
+  version: 1.0.0
+extends: openapi/tana-docs-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-source: https://tana.inc/api/docs
+      x-apievangelist-agent-native: true
+      x-apievangelist-llms-txt: https://tana.inc/llms.txt
+  - target: $.paths['/api/docs/search'].get
+    update:
+      x-apievangelist-note: Public, unauthenticated agent-native documentation search.

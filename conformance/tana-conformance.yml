@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: derived
+source:
+  - openapi/tana-input-api-openapi.yml
+  - openapi/tana-docs-api-openapi.yml
+standards:
+  - id: http-bearer-auth
+    conforms: true
+    evidence: Input API uses HTTP bearer token (Authorization header).
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth2 security schemes; tokens are static workspace tokens.
+  - id: openid-connect
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors returned as HTTP status + plain-text body, not application/problem+json.
+  - id: openapi-3
+    conforms: true
+    evidence: Both surfaces modeled as OpenAPI 3.1 (derived from published contracts).
+  - id: cursor-pagination
+    conforms: false
+    evidence: Neither API paginates; Documentation API bounds results with a limit param.
+  - id: rest
+    conforms: true
+    evidence: JSON over HTTP; Documentation API is resource/verb oriented.

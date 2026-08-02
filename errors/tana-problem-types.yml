@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: derived
+format: http-status
+source:
+  - openapi/tana-input-api-openapi.yml
+  - openapi/tana-docs-api-openapi.yml
+notes: >-
+  Tana does not publish an RFC 9457 problem+json error catalog. These entries are
+  derived from the documented HTTP status codes of the Input API (which returns a
+  plain-text body on failure) and the Documentation API. The Input API surfaces
+  errors by throwing on any non-200/201 response with the status text.
+problems:
+  - status: 400
+    title: Bad request
+    detail: >-
+      Invalid payload, unknown targetNodeId, malformed node/field/supertag, or a
+      documented restriction violated (over 100 nodes or 5000 characters).
+    source_operation: openapi/tana-input-api-openapi.yml#addToNode
+  - status: 401
+    title: Unauthorized
+    detail: Missing or invalid bearer token.
+    source_operation: openapi/tana-input-api-openapi.yml#addToNode
+  - status: 429
+    title: Too many requests
+    detail: Exceeded one call per second per token.
+    source_operation: openapi/tana-input-api-openapi.yml#addToNode

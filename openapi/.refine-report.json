@@ -1,0 +1,16 @@
+{
+  "provider": "tana",
+  "sources": [
+    "tana-addtonodev2-api-openapi.yml",
+    "tana-docs-api-openapi.yml"
+  ],
+  "outputs": [
+    "tana-addtonodev2-api-openapi.yml",
+    "tana-docs-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
