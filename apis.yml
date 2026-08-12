@@ -95,7 +95,7 @@ common:
 - type: Authentication
   url: authentication/tana-authentication.yml
 - type: OpenAPI
-  url: openapi/tana-input-api-openapi.yml
+  url: openapi/_original/tana-input-api-openapi.yml
 - type: OpenAPI
   url: openapi/tana-docs-api-openapi.yml
 - type: Overlay
