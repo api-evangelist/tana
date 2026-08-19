@@ -1,0 +1,277 @@
+{
+  "item": [
+    {
+      "id": "0f74cc90-3f0b-4d56-99c6-2390dd38aeb5",
+      "name": "AddToNodeV2",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a715437-0f88-4a1c-8fbc-2d0fd5050449",
+          "name": "Add nodes to a Tana graph (or rename a node)",
+          "request": {
+            "name": "Add nodes to a Tana graph (or rename a node)",
+            "description": {
+              "content": "Creates one or more nodes under `targetNodeId`, or renames the target node when `setName` is supplied. Nodes may include children, supertags, fields, and typed values (date, url, reference, boolean, file). To create a field definition set its supertag to `SYS_T02`; to create a supertag set it to `SYS_T01`; target `SCHEMA` for schema nodes or `INBOX` for the workspace inbox. Omitting `targetNodeId` places nodes in the Library.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "addToNodeV2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targetNodeId\": \"<string>\",\n  \"nodes\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\",\n      \"description\": \"<string>\",\n      \"attributeId\": \"<string>\",\n      \"value\": \"<boolean>\",\n      \"id\": \"<string>\",\n      \"file\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"supertags\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/APINode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/APINode detected>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\",\n      \"description\": \"<string>\",\n      \"attributeId\": \"<string>\",\n      \"value\": \"<boolean>\",\n      \"id\": \"<string>\",\n      \"file\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"supertags\": [\n        {\n          \"id\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\"\n        }\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/APINode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/APINode detected>\"\n        }\n      ]\n    }\n  ],\n  \"setName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c42c0758-1464-4629-93a5-83d283cb9de8",
+              "name": "Nodes created (or node renamed) successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addToNodeV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"name\": \"The Hobbit\",\n      \"description\": \"A book by J.R.R. Tolkien\",\n      \"supertags\": [\n        {\n          \"id\": \"MyTagId\"\n        }\n      ],\n      \"children\": []\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nodeId\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"children\": [\n    {\n      \"nodeId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TanaNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TanaNode detected>\"\n        }\n      ]\n    },\n    {\n      \"nodeId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TanaNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TanaNode detected>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7a1683f-e75a-4ff7-af77-3bc0a2b68145",
+              "name": "Created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addToNodeV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"name\": \"The Hobbit\",\n      \"description\": \"A book by J.R.R. Tolkien\",\n      \"supertags\": [\n        {\n          \"id\": \"MyTagId\"\n        }\n      ],\n      \"children\": []\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nodeId\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"children\": [\n    {\n      \"nodeId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TanaNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TanaNode detected>\"\n        }\n      ]\n    },\n    {\n      \"nodeId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TanaNode detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TanaNode detected>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b8fa79b-28ff-4cfa-b280-ba75823bf18b",
+              "name": "Bad request — invalid payload, unknown target, or a restriction was violated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addToNodeV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"name\": \"The Hobbit\",\n      \"description\": \"A book by J.R.R. Tolkien\",\n      \"supertags\": [\n        {\n          \"id\": \"MyTagId\"\n        }\n      ],\n      \"children\": []\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8f27ab3-1e8f-4556-a53a-763fff8f1df2",
+              "name": "Unauthorized — missing or invalid bearer token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addToNodeV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"name\": \"The Hobbit\",\n      \"description\": \"A book by J.R.R. Tolkien\",\n      \"supertags\": [\n        {\n          \"id\": \"MyTagId\"\n        }\n      ],\n      \"children\": []\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b83e4677-5250-40c8-b463-4b30ff9a08d1",
+              "name": "Rate limited — exceeded one call per second per token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addToNodeV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nodes\": [\n    {\n      \"name\": \"The Hobbit\",\n      \"description\": \"A book by J.R.R. Tolkien\",\n      \"supertags\": [\n        {\n          \"id\": \"MyTagId\"\n        }\n      ],\n      \"children\": []\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tana.inc",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0ac9a1ee-61f2-4237-ab95-b16f5f0e897e",
+    "name": "Tana Documentation AddToNodeV2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A public, unauthenticated agent-native documentation API for Tana. It lets an agent or client discover Tana's documentation programmatically: fetch the full index (feature taxonomy, section outlines, descriptions), search documentation by text pattern scoped to feature areas, and read a full page or a specific section as clean markdown. Covers both the Tana agentic meeting platform (product `tana`) and Tana Outliner (product `outliner`). The service is self-describing at https://tana.inc/api/docs and anchored by an llms.txt index.\n\nContact Support:\n Name: Tana",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,328 @@
+{
+  "item": [
+    {
+      "id": "d43044fd-44a3-4385-b004-38a30716cb50",
+      "name": "Docs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d36eb1b3-6bc7-4810-831c-ed5d3dfa3774",
+          "name": "Get the full documentation index",
+          "request": {
+            "name": "Get the full documentation index",
+            "description": {
+              "content": "Returns the full documentation index with feature taxonomy, section outlines, and descriptions as markdown.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "docs",
+                "index"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/markdown"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48d0cb0d-f9b0-47dd-900c-5b2c778c8e69",
+              "name": "Documentation index.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "docs",
+                    "index"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/markdown"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/markdown"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78a0dc47-341d-48cb-b83b-cbf9a5a9bc53",
+          "name": "Search documentation by text pattern",
+          "request": {
+            "name": "Search documentation by text pattern",
+            "description": {
+              "content": "Search documentation by text pattern, optionally scoped to feature areas. Returns matching document paths, titles, descriptions, and summaries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "docs",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search pattern. Minimum 2 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "features",
+                  "value": "<string>",
+                  "description": "Comma-separated feature keys to scope the search (e.g. ai-chat,types). Only docs tagged with these features are searched."
+                },
+                {
+                  "disabled": false,
+                  "key": "product",
+                  "value": "<string>",
+                  "description": "Product to search: `tana` or `outliner`. Defaults to the product of the host you are querying."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Maximum number of results to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcd85fe2-af05-4f04-ba2f-f79aac79eb6b",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "docs",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"query\": \"string\",\n  \"features\": \"string\",\n  \"product\": \"string\",\n  \"results\": [\n    {\n      \"path\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"tldr\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"path\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"tldr\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b152988c-f964-455b-9142-b97e1c8bfcf4",
+          "name": "Read a full page or a specific section as clean markdown",
+          "request": {
+            "name": "Read a full page or a specific section as clean markdown",
+            "description": {
+              "content": "Read a full documentation page or a specific section as clean markdown.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "docs",
+                "read"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "path",
+                  "value": "<string>",
+                  "description": "(Required) Document path in the format product/type/slug, using the singular docType key (e.g. tana/feature/ai-chat, outliner/help/getting-started). This is the path returned in search results."
+                },
+                {
+                  "disabled": false,
+                  "key": "section",
+                  "value": "<string>",
+                  "description": "Heading id to extract a single section (e.g. model-selection). Use \"intro\" for content before the first heading."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "markdown",
+                  "description": "Output format: markdown (default, MDX stripped) or raw (original MDX source)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/markdown"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee6ce2b0-db8e-4021-92ec-1bdfdc705cb2",
+              "name": "Document content as markdown.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "docs",
+                    "read"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "section",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "markdown"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/markdown"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/markdown"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tana.inc",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4c13d091-3cb3-4b72-8083-7b403a6a6768",
+    "name": "Tana Documentation AddToNodeV2 Docs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A public, unauthenticated agent-native documentation API for Tana. It lets an agent or client discover Tana's documentation programmatically: fetch the full index (feature taxonomy, section outlines, descriptions), search documentation by text pattern scoped to feature areas, and read a full page or a specific section as clean markdown. Covers both the Tana agentic meeting platform (product `tana`) and Tana Outliner (product `outliner`). The service is self-describing at https://tana.inc/api/docs and anchored by an llms.txt index.\n\nContact Support:\n Name: Tana",
+      "type": "text/plain"
+    }
+  }
+}

@@ -2,26 +2,30 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source:
-  - openapi/tana-input-api-openapi.yml
-  - openapi/tana-docs-api-openapi.yml
-notes: >-
-  No official first-party hosted/remote MCP server was found for Tana. The Tana
-  meeting platform is agentic (agents with live tool access), but does not
-  publish a public MCP endpoint for third parties. This is a candidate tool list
-  derived from the two documented public APIs.
+- openapi/tana-input-api-openapi.yml
+- openapi/tana-docs-api-openapi.yml
+notes: No official first-party hosted/remote MCP server was found for Tana. The Tana meeting platform
+  is agentic (agents with live tool access), but does not publish a public MCP endpoint for third parties.
+  This is a candidate tool list derived from the two documented public APIs.
 server:
   name: tana
   transport: stdio
 tools:
-  - name: add_to_node
-    description: Add nodes, fields, or supertags to a Tana graph (or rename a node).
-    source_operation: openapi/tana-input-api-openapi.yml#addToNode
-  - name: search_docs
-    description: Search Tana documentation by text pattern, scoped to feature areas.
-    source_operation: openapi/tana-docs-api-openapi.yml#searchDocs
-  - name: read_doc
-    description: Read a Tana documentation page or section as clean markdown.
-    source_operation: openapi/tana-docs-api-openapi.yml#readDoc
-  - name: get_docs_index
-    description: Get the full Tana documentation index and feature taxonomy.
-    source_operation: openapi/tana-docs-api-openapi.yml#getDocsIndex
+- name: add_to_node
+  description: Add nodes, fields, or supertags to a Tana graph (or rename a node).
+  source_operation: openapi/tana-input-api-openapi.yml#addToNode
+- name: search_docs
+  description: Search Tana documentation by text pattern, scoped to feature areas.
+  source_operation: openapi/tana-docs-api-openapi.yml#searchDocs
+- name: read_doc
+  description: Read a Tana documentation page or section as clean markdown.
+  source_operation: openapi/tana-docs-api-openapi.yml#readDoc
+- name: get_docs_index
+  description: Get the full Tana documentation index and feature taxonomy.
+  source_operation: openapi/tana-docs-api-openapi.yml#getDocsIndex
+deployment:
+  mode: none
+  verified: derived
+  tools: 4
+  checked: '2026-08-12'
+  source: catalog MCP census

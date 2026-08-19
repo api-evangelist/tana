@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tana Documentation AddToNodeV2 API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AddToNodeV2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add nodes to a Tana graph (or rename a node)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tana.inc/addToNodeV2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates one or more nodes under `targetNodeId`, or renames the target node when `setName` is supplied. Nodes may include children, supertags, fields, and typed values (date, url, reference, boolean, file). To create a field definition set its supertag to `SYS_T02`; to create a supertag set it to `SYS_T01`; target `SCHEMA` for schema nodes or `INBOX` for the workspace inbox. Omitting `targetNodeId` places nodes in the Library."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

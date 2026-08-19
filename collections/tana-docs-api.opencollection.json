@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tana Documentation AddToNodeV2 Docs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Docs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the full documentation index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tana.inc/api/docs/index"
+          },
+          "docs": "Returns the full documentation index with feature taxonomy, section outlines, and descriptions as markdown."
+        },
+        {
+          "info": {
+            "name": "Search documentation by text pattern",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tana.inc/api/docs/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search pattern. Minimum 2 characters."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated feature keys to scope the search (e.g. ai-chat,types). Only docs tagged with these features are searched."
+              },
+              {
+                "name": "product",
+                "value": "",
+                "type": "query",
+                "description": "Product to search: `tana` or `outliner`. Defaults to the product of the host you are querying."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return."
+              }
+            ]
+          },
+          "docs": "Search documentation by text pattern, optionally scoped to feature areas. Returns matching document paths, titles, descriptions, and summaries."
+        },
+        {
+          "info": {
+            "name": "Read a full page or a specific section as clean markdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tana.inc/api/docs/read",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "query",
+                "description": "Document path in the format product/type/slug, using the singular docType key (e.g. tana/feature/ai-chat, outliner/help/getting-started). This is the path returned in search results."
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "query",
+                "description": "Heading id to extract a single section (e.g. model-selection). Use \"intro\" for content before the first heading."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Output format: markdown (default, MDX stripped) or raw (original MDX source)."
+              }
+            ]
+          },
+          "docs": "Read a full documentation page or a specific section as clean markdown."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
