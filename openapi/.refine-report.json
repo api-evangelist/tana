@@ -1,16 +1,22 @@
 {
   "provider": "tana",
   "sources": [
-    "tana-addtonodev2-api-openapi.yml",
-    "tana-docs-api-openapi.yml"
+    "_original/tana-input-api-openapi.yml"
   ],
   "outputs": [
-    "tana-addtonodev2-api-openapi.yml",
-    "tana-docs-api-openapi.yml"
+    "tana-addtonodev2-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tana-input-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "tana-input-api-openapi.yml: tagged paths POST /addToNodeV2 -> AddToNodeV2",
+    "tana-input-api-openapi.yml: declared missing tag: AddToNodeV2"
+  ],
+  "skipped": [
+    "tana-addtonodev2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tana-docs-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

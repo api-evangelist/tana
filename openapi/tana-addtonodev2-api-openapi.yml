@@ -1,16 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tana Documentation AddToNodeV2 API
-  version: '1.0'
-  description: 'A public, unauthenticated agent-native documentation API for Tana. It lets an agent or client discover Tana''s documentation programmatically: fetch the full index (feature taxonomy, section outlines, descriptions), search documentation by text pattern scoped to feature areas, and read a full page or a specific section as clean markdown. Covers both the Tana agentic meeting platform (product `tana`) and Tana Outliner (product `outliner`). The service is self-describing at https://tana.inc/api/docs and anchored by an llms.txt index.'
+  title: Tana Input Add To Node V2 API
+  version: v2
+  description: 'The Tana Input API adds data — nodes, fields, and supertags — to a Tana Outliner graph. A single POST endpoint (`addToNodeV2`) accepts a JSON payload describing one or more nodes to create (optionally with children, supertags, fields, dates, references, checkboxes, and file uploads) under a target node, or renames a target node. APIs for reading from Tana graphs are not yet available (on the roadmap). Authentication uses a workspace-scoped bearer token generated from the Tana client (API Tokens). Restrictions: one call per second per token, max 100 nodes per call, max 5000 characters per request.'
   contact:
     name: Tana
-    url: https://tana.inc/api/docs
+    url: https://outliner.tana.inc/learn/features/input-api
+  x-source: https://github.com/tanainc/tana-input-api-samples
 servers:
-- url: https://tana.inc
-  description: Tana docs host (product defaults to tana)
-- url: https://outliner.tana.inc
-  description: Tana Outliner docs host (product defaults to outliner)
+- url: https://europe-west1-tagr-prod.cloudfunctions.net
+  description: Tana Input API (Google Cloud Functions, europe-west1)
+security:
+- bearerAuth: []
 tags:
 - name: AddToNodeV2
 paths:
@@ -72,20 +73,6 @@ paths:
       - AddToNodeV2
 components:
   schemas:
-    AddToNodeRequest:
-      type: object
-      properties:
-        targetNodeId:
-          type: string
-          description: Destination node. Accepts a node id, `SCHEMA`, or `INBOX`. Defaults to the workspace Library when omitted. The relative Today-node is not supported.
-        nodes:
-          type: array
-          maxItems: 100
-          items:
-            $ref: '#/components/schemas/APINode'
-        setName:
-          type: string
-          description: When present, renames the target node (mutually exclusive with nodes).
     APINode:
       type: object
       description: A node to create. dataType selects the node shape.
@@ -150,6 +137,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TanaNode'
+    AddToNodeRequest:
+      type: object
+      properties:
+        targetNodeId:
+          type: string
+          description: Destination node. Accepts a node id, `SCHEMA`, or `INBOX`. Defaults to the workspace Library when omitted. The relative Today-node is not supported.
+        nodes:
+          type: array
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/APINode'
+        setName:
+          type: string
+          description: When present, renames the target node (mutually exclusive with nodes).
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Workspace-scoped API token, generated in the Tana client under API Tokens. Sent as `Authorization: Bearer <token>`.'
 externalDocs:
-  description: Tana Documentation API (self-describing manifest)
-  url: https://tana.inc/api/docs
+  description: Tana Input API documentation
+  url: https://outliner.tana.inc/learn/features/input-api

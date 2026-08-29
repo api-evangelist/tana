@@ -72,17 +72,6 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- name: Tana Documentation API
-  description: >-
-    Public, unauthenticated agent-native documentation API: index, search, and read Tana and Tana Outliner
-    docs as clean markdown.
-  humanURL: https://tana.inc/api/docs
-  baseURL: https://tana.inc
-  properties:
-  - type: OpenAPI
-    url: openapi/tana-docs-api-openapi.yml
-  - type: Overlay
-    url: overlays/tana-docs-api-overlay.yaml
 - aid: tana:tana-addtonodev2-api
   name: Tana AddToNodeV2 API
   description: The AddToNodeV2 API from Tana — 1 operation(s) for addtonodev2.
