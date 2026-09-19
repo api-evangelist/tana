@@ -1,28 +1,29 @@
-# Kin Score artifact — tana — 2026-08-17T064519
+# Kin Score artifact — tana — 2026-09-18T205255
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: tana
-  schema_version: 0.11.0
-  scored_at: '2026-08-17'
-  run_ts: 2026-08-17T064519
-  composite: 45.6
+  schema_version: 0.22.0
+  scored_at: '2026-09-18'
+  run_ts: 2026-09-18T205255
+  composite: 45.0
   band: developing
   facets:
     discoverability: 75.9
-    contract_quality: 57.5
-    governance: 11.5
-    operational_transparency: 21.1
-    developer_ergonomics: 58.2
-    commercial_clarity: 39.5
+    contract_quality: 59.9
+    contract_governance: 4.5
+    operational_transparency: 18.4
+    developer_ergonomics: 61.3
+    access_clarity: 39.5
   agent_readiness:
-    score: 44.4
+    score: 28.6
     band: agent-ready
     dimensions:
       spec_presence: true
       agentic_access: derived
-      mcp_server: derived
-      auth_clarity: true
+      reversibility_documented: false
+      mcp_server: false
+      auth_clarity: bearer
       idempotency: false
       error_semantics: documented
       openapi_examples: verified
@@ -33,6 +34,10 @@ kin_score:
       consent_identity: false
       agent_card: false
       dry_run_mode: false
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
   provenance:
     mcp: derived
     skills: derived
