@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Tana Input Add To Node V2 API
   version: v2
-  description: 'The Tana Input API adds data — nodes, fields, and supertags — to a Tana Outliner graph. A single POST endpoint (`addToNodeV2`) accepts a JSON payload describing one or more nodes to create (optionally with children, supertags, fields, dates, references, checkboxes, and file uploads) under a target node, or renames a target node. APIs for reading from Tana graphs are not yet available (on the roadmap). Authentication uses a workspace-scoped bearer token generated from the Tana client (API Tokens). Restrictions: one call per second per token, max 100 nodes per call, max 5000 characters per request.'
+  description: The Tana Input API adds data — nodes, fields, and supertags — to a Tana Outliner graph.
   contact:
     name: Tana
     url: https://outliner.tana.inc/learn/features/input-api
