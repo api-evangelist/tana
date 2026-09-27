@@ -51,7 +51,7 @@ modified: '2026-07-21'
 tags:
 - Company
 - Note Taking
-- Knowledge-Management
+- Knowledge Management
 - Productivity
 - Artificial Intelligence
 - Meetings
@@ -68,6 +68,7 @@ tags_raw:
 - Agents
 - Collaboration
 - Outliner
+- Knowledge-Management
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
