@@ -73,19 +73,6 @@ paths:
       - AddToNodeV2
 components:
   schemas:
-    TanaNode:
-      type: object
-      properties:
-        nodeId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/TanaNode'
     APINode:
       type: object
       description: A node to create. dataType selects the node shape.
@@ -151,6 +138,19 @@ components:
         setName:
           type: string
           description: When present, renames the target node (mutually exclusive with nodes).
+    TanaNode:
+      type: object
+      properties:
+        nodeId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/TanaNode'
   securitySchemes:
     bearerAuth:
       type: http
