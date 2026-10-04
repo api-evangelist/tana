@@ -73,6 +73,33 @@ paths:
       - AddToNodeV2
 components:
   schemas:
+    TanaNode:
+      type: object
+      properties:
+        nodeId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/TanaNode'
+    AddToNodeRequest:
+      type: object
+      properties:
+        targetNodeId:
+          type: string
+          description: Destination node. Accepts a node id, `SCHEMA`, or `INBOX`. Defaults to the workspace Library when omitted. The relative Today-node is not supported.
+        nodes:
+          type: array
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/APINode'
+        setName:
+          type: string
+          description: When present, renames the target node (mutually exclusive with nodes).
     APINode:
       type: object
       description: A node to create. dataType selects the node shape.
@@ -124,33 +151,6 @@ components:
             $ref: '#/components/schemas/APINode'
       required:
       - name
-    AddToNodeRequest:
-      type: object
-      properties:
-        targetNodeId:
-          type: string
-          description: Destination node. Accepts a node id, `SCHEMA`, or `INBOX`. Defaults to the workspace Library when omitted. The relative Today-node is not supported.
-        nodes:
-          type: array
-          maxItems: 100
-          items:
-            $ref: '#/components/schemas/APINode'
-        setName:
-          type: string
-          description: When present, renames the target node (mutually exclusive with nodes).
-    TanaNode:
-      type: object
-      properties:
-        nodeId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/TanaNode'
   securitySchemes:
     bearerAuth:
       type: http
