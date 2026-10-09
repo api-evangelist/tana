@@ -1,0 +1,80 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://tana.inc/pricing
+sources:
+- https://tana.inc/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+  managed_tier: Pro
+published: true
+note: Pro shows early bird $20 with $30 struck through, per user/month; yearly/monthly toggle. Business
+  is custom, billed yearly.
+plan_count: 3
+currency: USD
+plans:
+- name: Free
+  price_text: $0
+  price: 0
+  currency: USD
+  period: month
+  unit: user
+  included_quota: Host 5 meetings a month with AI transcripts and summaries, Connect 1 calendar, View
+    and edit all your content, 50 AI queries
+- name: Pro
+  price_text: $20
+  price: 20
+  currency: USD
+  period: month
+  unit: per user/month
+  included_quota: 'Everything in free, plus: 20× more AI than the free plan, Unlimited hosted meetings,
+    Botless meeting agent, Integrations and full MCP'
+  overage: You can top up AI credits with custom amounts whenever needed.
+- name: Business
+  price_text: Custom
+  period: year
+  included_quota: SAML SSO, Advanced security & controls, Designated customer success manager, Audit logs,
+    Custom DPA & data residency/retention policy control
+rate_limit_statements:
+- Host 5 meetings a month with AI transcripts and summaries
+- 50 AI queries
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - hybrid
+  units:
+  - seat
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Pro
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Business
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - year
