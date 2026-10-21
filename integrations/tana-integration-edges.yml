@@ -1,0 +1,24 @@
+generated: '2026-10-21'
+method: searched
+checked:
+- atlassian/integrations/atlassian-integration-edges.yml
+source:
+- atlassian/integrations/atlassian-integration-edges.yml
+edges:
+- partner_name: Atlassian (own)
+  partner: atlassian
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.atlassian.com/vendors/962759670/tana
+  mirror_of: atlassian/integrations/atlassian-integration-edges.yml
+  apps:
+  - Tana
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: Atlassian Marketplace app
