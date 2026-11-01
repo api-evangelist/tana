@@ -64,6 +64,134 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Tana is a company surfaced as a portfolio company of lightspeed-venture-partners, northzone and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Tana Inc. builds two products that share the Tana brand: Tana, an agentic meeting platform where AI agents do real work during native video calls and land decisions, tasks, and drafts in a persistent context graph; and Tana Outliner, a knowledge-management tool built on an infinite outliner with supertags and nodes. Tana exposes two public HTTP APIs — the Tana Input API for programmatically adding nodes, fields, and supertags to an Outliner workspace graph (workspace-scoped bearer-token auth), and a public agent-native Documentation API for searching and reading Tana docs as clean markdown. Backed by Lightspeed Venture Partners and Northzone.
 
-Backed by: lightspeed-venture-partners, northzone — https://tana.inc
+**Areas:** Company · Note Taking · Knowledge Management · Productivity · Artificial Intelligence · Meetings · Agents · Collaboration · Outliner
+
+## Tana on APIs.io
+
+Everything profiled for Tana is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/tana/](https://apis.io/providers/tana/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Tana AddToNodeV2 API](https://apis.io/apis/tana/tana-addtonodev2-api/) — The AddToNodeV2 API from Tana — 1 operation(s) for addtonodev2.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [tana](https://apis.io/servers/tana/tana/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Tana Agentic Access](https://apis.io/agentic-access/tana/tana-agentic-access/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [Tana Documentation AddToNodeV2 API](https://apis.io/collections/tana/open-tana-addtonodev2-api/)
+- [Tana Documentation AddToNodeV2 Docs API](https://apis.io/collections/tana/open-tana-docs-api/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Tana Docs Api Overlay](https://apis.io/overlays/tana/tana-docs-api-overlay/)
+- [Tana Input Api Overlay](https://apis.io/overlays/tana/tana-input-api-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Tana Authentication](https://apis.io/security/tana/tana-authentication/)
+- [Tana Domain Security](https://apis.io/security/tana/tana-domain-security/)
+- [Tana Trust Center](https://apis.io/security/tana/tana-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Tana Plans Pricing](https://apis.io/plans/tana/tana-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Tana Rate Limits](https://apis.io/rate-limits/tana/tana-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://tana.inc)
+- [Documentation](https://tana.inc/learn)
+- [Getting started](https://outliner.tana.inc/help/getting-started)
+- [API reference](https://outliner.tana.inc/learn/features/input-api)
+- [Pricing](https://tana.inc/pricing)
+- [Blog](https://tana.inc/blog)
+- [Terms of service](https://tana.inc/terms)
+- [Privacy policy](https://tana.inc/privacy)
+- [GitHub](https://github.com/tanainc)
+- [Status](https://status.tana.inc)
+
+## API Evangelist rating
+
+**Kin Score 51.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 53.9 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 61.3 |
+| Access clarity | 71.1 |
+
+**Agent readiness 26.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 27.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/tana/](https://apis.io/providers/tana/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Tana: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/tana/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
